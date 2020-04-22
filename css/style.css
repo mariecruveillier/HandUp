@@ -85,7 +85,6 @@ canvas {
 	height: 2em;
 	position: absolute;
 	z-index: 5;
-	background-image: url('img/no_video.png');
 	background-color: white;
 	margin-left: 11.2%;
 	margin-top: -24.3%;
@@ -96,7 +95,6 @@ canvas {
 }
 
 #hCam{
-	background-image: url('img/no_video.png');
 	background-size: 40% 15px;
 	background-repeat: no-repeat;
 	background-position: center; 
@@ -445,7 +443,6 @@ box-shadow:0 0 .125rem #aaa}
 	background-color: #20F9DC;
 	border : 0em;
 }
-
 
 @keyframes translation {
   from {
