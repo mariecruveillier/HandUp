@@ -1,0 +1,59 @@
+html{
+	width: 100%;
+	height:100%;
+}
+
+body{
+	background-color:#404040;
+	width:100%;
+	height:100%;
+}
+
+#imgHead{
+	top: 5%;
+	display : flex;
+	position: relative;
+	left:15%;
+}
+
+#LogoHandUp{
+	width: 70%;
+	height:150%;
+
+}
+
+#goToChooseMusic{
+	display: flex;
+	position: relative;
+	top: 21%;
+	left: 45%;
+	width: 17%;
+	height:auto;
+}
+
+#goToChooseMusic:hover{
+	width: 25%;
+}
+
+#text{
+	top: 15%;
+	display: flex;
+	color:white;
+	text-align :justify;
+	justify-content:center;
+	position: relative;
+	font-family: 'Roboto Mono', monospace;
+}
+
+#introduction{
+	flex-direction : column;
+	flex-wrap : wrap;
+	align-content: flex-start;
+	width :30%;
+	height:100%;
+	display: flex;
+	position: relative;
+	left: 35%;
+	top: 15%;
+	flex-flow: flex-direction;
+}
