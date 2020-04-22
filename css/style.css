@@ -428,7 +428,6 @@ box-shadow:0 0 .125rem #aaa}
 #close{
 	width: 15%;
 	height: 8%;
-	border: 0.1em solid white;
 	display: flex;
 	position: absolute;
 	margin-left: 44%;
