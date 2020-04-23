@@ -102,9 +102,7 @@ canvas {
 
 
 #instructions, #screenshot{
-	width : 85%;
 	height: 10%;
-	margin-left: 7.5%;
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -113,6 +111,35 @@ canvas {
 	font-family: 'Roboto Mono', monospace;
 	background-color: #404040;
 	border-radius: 2%;
+}
+
+.otherMode {
+	background-color: #404040;
+}
+
+#instructions, #screenshot {
+	width : 85%;
+}
+
+#mouseMode, #webcamMode{
+	width : 42.5%;
+	border-radius:2%;
+	z-index: 5;
+	font-family: 'Roboto Mono', monospace;
+	height:10%;
+	position:absolute;
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+
+#instructions, #screenshot, #webcamMode{
+	margin-left: 7.5%;
+}
+
+#mouseMode{
+	margin-left: 50.5%;
+
 }
 
 #instructions{
@@ -126,13 +153,19 @@ canvas {
 	display : flex;
 }
 
-#instructions:hover, #screenshot:hover{
+#instructions:hover, #screenshot:hover, .otherMode:hover{
 	background-color: #20F9DC;
 }
 
 #screenshot {
 	margin-top: 155%;
 }
+
+#mouseMode, #webcamMode{
+	margin-top: 179%;
+}
+
+
 
 #nbPnts {
 	width : 70%;

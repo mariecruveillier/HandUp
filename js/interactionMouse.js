@@ -18,5 +18,6 @@
               (doc && doc.clientTop  || body && body.clientTop  || 0 );
         }
 
+        document.getElementById("positionMouseX").innerHTML = event.clientX;
     }
 })();

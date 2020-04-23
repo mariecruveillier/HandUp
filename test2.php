@@ -64,10 +64,10 @@
 			<div id="panelMenu">
 				<div id="instructions"><p> instructions </p></div>
 				<div id="screenshot"><p>screenshot</p></div>
-				<a id="mouseMode" href="./test2.php" class="otherMode">
-					<p> mouse </p>
+				<div id="mouseMode"><p> mouse </p></div>
+				<a id="webcamMode" href="./test.php" class="otherMode">
+					<p> webcam </p>
 				</a>
-				<div id="webcamMode"><p> webcam </p></div>
 				<div id="manageSound"></div>
 				<div id="nextSound"></div>
 				<div id="previousSound"></div>
@@ -85,7 +85,7 @@
 			</div>
 
 			<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
-			<script type="text/javascript" src="js/app.js"></script>
+			
 			
 			<script>
 				const html2canvas = window.html2canvas;
@@ -232,7 +232,7 @@
 
 					  posXmouse = document.getElementById("positionMouseX").innerText;
 					  posXmouseMin = parseInt(posXmouse,32);
-					  posXmouseMin *= 0.001;
+					  posXmouseMin *= 0.01;
 					  posXmouseMin = Math.round(posXmouseMin);
 					  setVolume();
 
@@ -240,8 +240,7 @@
 					  {
 					  	getVolume();
 					  	//document.getElementById("loading").style.display = "none";
-					  	var color = new THREE.Color("hsl(" + (index * 360 * 4) + "," + (posXmouseMin*5) + "% ," +  (posXmouseMin*8) + "%)");
-
+					  	var color = new THREE.Color("hsl(" + (index * 360 * 4) + "," + (posXmouseMin) + "% ," +  (posXmouseMin) + "%)");
 					  	// Loop for the amount of particles we want along each circle
 						for (var j = 0; j < circlesDetail; j++) {
 						    var position = p.clone();// Clone the position of the point in the center
@@ -309,22 +308,43 @@
 
 		/*
 			//
-			// Permet de changer le nombre de points par cercle
+			// Permet de changer le nombre de points par cercle, save png, instructions
 			//
 		*/
-			document.getElementById('DetailCircleRange').addEventListener('click', function (event) {
-				changeDetailCircles();
+			//mode clavier
+			document.addEventListener("keydown", event => {
+  				if (event.isComposing || event.keyCode === 107) {
+  					if (circlesDetail<1200){
+  	    				circlesDetail  += 50;					
+  					}
+    			return;
+		  		}
+		  		else if (event.isComposing || event.keyCode === 109) {
+		  			if(circlesDetail>50)
+		  			{
+	    				circlesDetail  -= 50;	  				
+		  			}
+    			return;
+		  		}
+		  		else if (event.isComposing || event.keyCode === 83) {
+						html2canvas(document.querySelector("canvas")).then(canvas => {
+							var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+							window.location.href=image;	
+						});
+						return;
+    			}
+    			else if (event.isComposing || event.keyCode === 73) {
+						document.getElementById('panelInstructions').style.display = "flex";
+						document.getElementById('nuageDePoints').style.display = "none";
+						sound.pause();
+						return;
+				}
+
+			  // do something
 			});
 
-
-			function changeDetailCircles()
-			{
-		  		circlesDetail = document.getElementById("DetailCircleRange").value;
-		  		circlesDetail *= 2;
-			}
-
 		/*
-			//
+			//s
 			// gestion de l'audio : mettre en pause, reprendre la lecture, changer de musique
 			//
 		*/
@@ -423,15 +443,13 @@
 				lessTheOppacity(stopIMG);
 			}
 
-
 		/*
 			//
 			// Mouse 
 			//
 		*/
-			document.getElementById('webcamMode').style.border = "0.1em solid #404040";
-			document.getElementById('webcamMode').style.backgroundColor = "#2e2e2e";
-
+			document.getElementById('mouseMode').style.border = "0.1em solid #404040";
+			document.getElementById('mouseMode').style.backgroundColor = "#2e2e2e";
 
 		/*
 			//
@@ -439,19 +457,14 @@
 			//
 		*/
 
-			document.getElementById('instructions').addEventListener('click', function(event)
-			{
-				document.getElementById('panelInstructions').style.display = "flex";
-				document.getElementById('nuageDePoints').style.display = "none";
-				sound.pause();
-			});
-
 			document.getElementById('close').addEventListener('click', function(event)
 			{
 				document.getElementById('panelInstructions').style.display = "none";
 				document.getElementById('nuageDePoints').style.display = "flex";
 				sound.play();
 			});
+
+
 
 
 		/*
@@ -509,11 +522,12 @@
 			    requestAnimationFrame(animate);
 			}
 
+
+
 		</script>
 		<script src="js/appear.js"></script>
 		<script src="js/hideCam.js"></script>
 		<script src="js/changeVolume.js"></script>
-		<script src="js/screenshot.js"></script>
 	</div>
 	</body>
 </html>

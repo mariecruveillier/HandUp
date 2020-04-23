@@ -5,7 +5,6 @@ function saveCanvas(){
 	});
 }
 
-
 document.getElementById('screenshot').addEventListener('click', function (event) {
 	saveCanvas();
 });
