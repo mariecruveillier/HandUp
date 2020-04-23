@@ -495,29 +495,11 @@
 			    requestAnimationFrame(animate);
 			}
 
-/*
-			function takeScreenshot(){
-				canvas.style.width="10%";
-				canvas.style.height="200px";
-				html2canvas(document.querySelector("body")).then(canvas => {
-		    		document.body.appendChild(canvas)
-				});
-
-		}
-*/
-			function saveCanvas(){
-				//html2canvas(document.querySelector("body")).then(canvas => {
-				html2canvas(renderer).then(canvas => {
-		    		//document.body.appendChild(canvas)
-		    		var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-		    		console.log(image);
-		    		window.location.href=image;
-				});
-			}
 		</script>
 		<script src="js/appear.js"></script>
 		<script src="js/hideCam.js"></script>
 		<script src="js/changeVolume.js"></script>
+		<script src="js/screenshot.js"></script>
 	</div>
 	</body>
 </html>
