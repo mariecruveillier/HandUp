@@ -64,6 +64,8 @@
 			<div id="panelMenu">
 				<div id="instructions"><p> instructions </p></div>
 				<div id="screenshot"><p>screenshot</p></div>
+				<div id="mouseMode"><p> mouse </p></div>
+				<div id="webcamMode"><p> webcam </p></div>
 				<div id="manageSound"></div>
 				<div id="nextSound"></div>
 				<div id="previousSound"></div>

@@ -215,6 +215,7 @@ canvas {
 }
 
 
+
 #infoTrack{
 	color: red;
 	width: 8%;
@@ -274,7 +275,7 @@ canvas {
   	display: none;
 }
 
-#nextSound:hover, #previousSound:hover, #manageSound:hover, #hideCam:hover{
+#nextSound:hover, #previousSound:hover, #manageSound:hover, #hideCam:hover, #mouseMode:hover, #webcamMode:hover {
 	background-color:#20F9DC;
 }
 
@@ -353,7 +354,6 @@ background:linear-gradient(to bottom,#26a65b 10%,#36e27d)
 }
 
 .range_css::-ms-tooltip{display:none}
-
 
 /*****firefox*****/
 .range_css::-moz-range-thumb{
