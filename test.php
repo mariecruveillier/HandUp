@@ -58,19 +58,19 @@
 		<div id="nuageDePoints">
 			<div id="displayedVolume"></div> 
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
-			<div id="hideCam">
+			<div id="hideCam" class="camModeWebcam">
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
-				<div id="instructions"><p> instructions </p></div>
-				<div id="screenshot"><p>screenshot</p></div>
+				<div id="instructions" class="instructionsModeWebcam" ><p> instructions </p></div>
+				<div id="screenshot" class="instructionsModeWebcam" ><p>screenshot</p></div>
 				<a id="mouseMode" href="./test2.php" class="otherMode">
 					<p> mouse </p>
 				</a>
 				<div id="webcamMode"><p> webcam </p></div>
-				<div id="manageSound"></div>
-				<div id="nextSound"></div>
-				<div id="previousSound"></div>
+				<div id="manageSound" class="manageFromMouse"></div>
+				<div id="nextSound" class="manageFromMouse"></div>
+				<div id="previousSound" class="manageFromMouse"></div>
 				<div id="infoTrack"></div>
 				<div id="StopIMG"> <img src="img/pause.png"></div> 
 				<div id="loading"> <img src="img/loading.png"> </div>

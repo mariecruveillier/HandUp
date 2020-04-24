@@ -58,28 +58,25 @@
 		<div id="nuageDePoints">
 			<div id="displayedVolume"></div> 
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
-			<div id="hideCam">
+			<div id="hideCam" class="camModeMouse">
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
-				<div id="instructions"><p> instructions </p></div>
-				<div id="screenshot"><p>screenshot</p></div>
+				<p id="more"> + </p>
+				<p class="indicationKeyBoard" id="keyNbParticles"> particles </p>
+				<p id="less"> - </p>
+				<div id="instructions" class="instructionsModeMouse"> <p> i </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
+				<div id="screenshot" class="instructionsModeMouse"><p>s</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
 				<div id="mouseMode"><p> mouse </p></div>
 				<a id="webcamMode" href="./test.php" class="otherMode">
 					<p> webcam </p>
 				</a>
-				<div id="manageSound"></div>
-				<div id="nextSound"></div>
-				<div id="previousSound"></div>
+				<div id="manageSound" class="manageFromKeyboard"></div>
+				<div id="nextSound" class="manageFromKeyboard"></div>
+				<div id="previousSound" class="manageFromKeyboard"></div>
 				<div id="infoTrack"></div>
 				<div id="StopIMG"> <img src="img/pause.png"></div> 
 				<div id="loading"> <img src="img/loading.png"> </div>
-
-				<div id="nbPnts">
-					<img id="imgCircles" src="img/circles.png" alt="nombre de points"/>
-					<input type="range" id="DetailCircleRange" class='range_css'/>
-				</div>
-
 				<video id="video" src="" opacity="0"></video>
 
 			</div>
@@ -164,7 +161,6 @@
 				  points[i] = new THREE.Vector3(x, y, z);
 				}
 				
-				hideCam.style.backgroundImage = "url('img/no_video.png')";
 				document.getElementById("manageSound").style.backgroundImage = "url('img/playBlanc.png')";
 				document.getElementById("previousSound").style.backgroundImage = "url('img/lastBlanch.png')";
 				document.getElementById("nextSound").style.backgroundImage = "url('img/nextBlanc.png')";
@@ -340,7 +336,6 @@
 						return;
 				}
 
-			  // do something
 			});
 
 		/*
@@ -453,22 +448,6 @@
 
 		/*
 			//
-			// Instructions
-			//
-		*/
-
-			document.getElementById('close').addEventListener('click', function(event)
-			{
-				document.getElementById('panelInstructions').style.display = "none";
-				document.getElementById('nuageDePoints').style.display = "flex";
-				sound.play();
-			});
-
-
-
-
-		/*
-			//
 			// Initialisation, resizer, render et boucle de rendu 
 			//
 		*/
@@ -526,7 +505,6 @@
 
 		</script>
 		<script src="js/appear.js"></script>
-		<script src="js/hideCam.js"></script>
 		<script src="js/changeVolume.js"></script>
 	</div>
 	</body>

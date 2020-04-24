@@ -24,6 +24,27 @@ video {
 	margin-top:4.5%;
 }
 
+.camModeMouse{
+	width:0%;
+	height:0%;
+	position: absolute;
+	display: flex;
+}
+
+.camModeWebcam{
+	width : 3%;
+	height: 2em;
+	position: absolute;
+	z-index: 5;
+	background-color: white;
+	margin-left: 11.2%;
+	margin-top: -24.3%;
+	background-size: 40% 15px;
+	background-repeat: no-repeat;
+  	background-position: center; 
+  	display: none;
+}
+
 canvas {
 	display :flex ;
 	z-index : 0;
@@ -80,19 +101,6 @@ canvas {
 	font-family: 'Roboto Mono', monospace;
 }
 
-#hideCam{
-	width : 3%;
-	height: 2em;
-	position: absolute;
-	z-index: 5;
-	background-color: white;
-	margin-left: 11.2%;
-	margin-top: -24.3%;
-	background-size: 40% 15px;
-	background-repeat: no-repeat;
-  	background-position: center; 
-  	display: none;
-}
 
 #hCam{
 	background-size: 40% 15px;
@@ -100,8 +108,35 @@ canvas {
 	background-position: center; 
 }
 
+#less{
+	margin-top: 106%;
+	display : flex;
+}
+#more{
+ 	margin-top: 115%;
+ 	display : flex;
+}
 
-#instructions, #screenshot{
+#less, #more{
+	height: 5%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color : white;
+	z-index : 5;
+	font-family: 'Roboto Mono', monospace;
+	border-radius: 2%;
+	width : 15%;
+}
+
+
+#keyNbParticles{
+	margin-top: 113%;
+}
+
+
+#instructions, #screenshot, .indicationKeyBoard{
 	height: 10%;
 	position: absolute;
 	display: flex;
@@ -109,7 +144,6 @@ canvas {
 	color : white;
 	z-index : 5;
 	font-family: 'Roboto Mono', monospace;
-	background-color: #404040;
 	border-radius: 2%;
 }
 
@@ -117,8 +151,16 @@ canvas {
 	background-color: #404040;
 }
 
-#instructions, #screenshot {
+.instructionsModeWebcam{
 	width : 85%;
+}
+
+.instructionsModeMouse{
+	width : 15%;
+}
+
+.indicationKeyBoard{
+	margin-left: 40%;
 }
 
 #mouseMode, #webcamMode{
@@ -133,8 +175,9 @@ canvas {
 	color: white;
 }
 
-#instructions, #screenshot, #webcamMode{
+#instructions, #screenshot, #webcamMode, #more, #less{
 	margin-left: 7.5%;
+	background-color: #404040;
 }
 
 #mouseMode{
@@ -157,15 +200,21 @@ canvas {
 	background-color: #20F9DC;
 }
 
-#screenshot {
+#screenshot, #screenS {
 	margin-top: 155%;
+}
+
+#instruc{
+	margin-top: 135%;
+}
+
+#screenS{
+		margin-top: 160%;
 }
 
 #mouseMode, #webcamMode{
 	margin-top: 179%;
 }
-
-
 
 #nbPnts {
 	width : 70%;
@@ -175,8 +224,9 @@ canvas {
 	flex-direction : row;
 	flex-wrap : wrap;
 	margin-left: 7.5%;
-	margin-top: 105%;
+	margin-top : 105%;
 }
+
 
 #nbPnts:hover{
 	background-color: white;
@@ -261,7 +311,6 @@ canvas {
 }
 
 #manageSound{
-	width : 30%;
 	height : 2em;
 	position: absolute;
 	background-color: black;
@@ -277,7 +326,6 @@ canvas {
 }
 
 #previousSound{
-	width : 30%;
 	height : 2em;
 	position: absolute;
 	background-color: black;
@@ -293,7 +341,6 @@ canvas {
 }
 
 #nextSound{
-	width : 30%;
 	height : 2em;
 	position: absolute;
 	background-color: black;
@@ -306,6 +353,14 @@ canvas {
 	background-repeat: no-repeat;
   	background-position: center;
   	display: none;
+}
+
+.manageFromKeyboard{
+	width : 0%;
+}
+
+.manageFromMouse {
+	width : 30%;
 }
 
 #nextSound:hover, #previousSound:hover, #manageSound:hover, #hideCam:hover, #mouseMode:hover, #webcamMode:hover {

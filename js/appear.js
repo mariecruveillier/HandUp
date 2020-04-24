@@ -28,7 +28,9 @@ document.getElementById('button2').addEventListener('click', function (event) {
 				var panelMenu = document.getElementById("panelMenu");
 
 				objAppear(panelMenu);
-				objAppear(nbPnts);
+				if(nbPnts != null){
+					objAppear(nbPnts);		
+				}
 				objAppear(manageSound);
 				objAppear(cam);
 				objAppear(previousSound);
