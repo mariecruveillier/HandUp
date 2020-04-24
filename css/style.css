@@ -69,7 +69,7 @@ canvas {
 
 #panelMenu{
 	width : 15%;
-	height: 500px;
+	height: 600px;
 	background-color: #2e2e2e;
 	z-index: 4;
 	position: absolute;
@@ -108,6 +108,7 @@ canvas {
 	background-position: center; 
 }
 
+
 #less{
 	margin-top: 106%;
 	display : flex;
@@ -117,8 +118,7 @@ canvas {
  	display : flex;
 }
 
-#less, #more{
-	height: 5%;
+#less, #more, #nextM, #previousM, #playPause, #top, #low, #left, #right{
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -130,6 +130,75 @@ canvas {
 	width : 15%;
 }
 
+#nextM, #previousM, #playPause{
+	height: 5%;
+}
+
+#top, #low, #left, #right{
+	height: 5%;
+}
+
+#top{
+	margin-top: 22%;
+	display: flex;
+}
+
+#low{
+	margin-top: 35%;
+	display: flex;
+}
+
+#right{
+	margin-top: 55%
+}
+
+#left{
+	margin-top: 42%;
+}
+
+#playPause{
+	margin-top: 67%;
+	display : flex;
+}
+
+#nextM{
+	margin-top: 93%;
+	display : flex;
+}
+
+#previousM{
+	margin-top: 80%;
+	display : flex;
+}
+
+#less, #more{
+	height: 5%;
+}
+
+#keyPrevious{
+	margin-top: 81%;
+}
+#keyNext{
+	margin-top: 94%;
+}
+#keyPlayPause{
+	margin-top: 68%;
+}
+#keyTop{
+	margin-top: 23%;
+}
+
+#keyLow{
+	margin-top: 31%;
+}
+
+#keyLeft{
+	margin-top: 43%;
+}
+
+#keyRight{
+	margin-top: 56%;
+}
 
 #keyNbParticles{
 	margin-top: 113%;
@@ -137,7 +206,7 @@ canvas {
 
 
 #instructions, #screenshot, .indicationKeyBoard{
-	height: 10%;
+	height: %;
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -175,7 +244,7 @@ canvas {
 	color: white;
 }
 
-#instructions, #screenshot, #webcamMode, #more, #less{
+#instructions, #screenshot, #webcamMode, #more, #less, #nextM, #previousM, #playPause, #top, #right, #left, #low{
 	margin-left: 7.5%;
 	background-color: #404040;
 }
@@ -196,7 +265,19 @@ canvas {
 	display : flex;
 }
 
-#instructions:hover, #screenshot:hover, .otherMode:hover{
+.otherMode:hover{
+	background-color: #20F9DC;
+}
+
+#webcamMode.otherMode:hover{
+	background-color: #20F9DC;
+}
+
+#screenshot.instructionsModeWebcam:hover{
+	background-color: #20F9DC;
+}
+
+#instructions.instructionsModeWebcam:hover{
 	background-color: #20F9DC;
 }
 

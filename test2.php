@@ -45,11 +45,11 @@
 			<div id="button1"><p>
 				<select name="musique" id="musique_selection">
 				    <option value="">--Please choose a song--</option>
-				    <option value="hard rock">ACDC</option>
-				    <option value="classique">Vivaldi</option>
-				    <option value="pop">Prince</option>
-				    <option value="jazz"> Dave Brubeck </option>
-				    <option value="electro"> Daft Punk </option>
+				    <option value="ACDC">ACDC</option>
+				    <option value="Vivaldi">Vivaldi</option>
+				    <option value="Prince">Prince</option>
+				    <option value="Dave"> Dave Brubeck </option>
+				    <option value="Daft"> Daft Punk </option>
 				</select>
 		</div>
 			<div id="button2"> <img src="img/letsgo.png" width="80%"> </div>
@@ -62,11 +62,25 @@
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
+				<p id="top"> z </p>
+				<p class="indicationKeyBoard" id="keyTop"> top </p>
+				<p id="low"> s <p>
+				<p class="indicationKeyBoard" id="keyLow"> low </p>
+				<p id="left"> q </p>
+				<p class="indicationKeyBoard" id="keyLeft"> left </p>
+				<p id="right"> d </p>
+				<p class="indicationKeyBoard" id="keyRight"> right </p>
+				<p id="playPause"> __ </p>
+				<p class="indicationKeyBoard" id="keyPlayPause"> play/pause</p>
+				<p id="previousM"> p </p>
+				<p class="indicationKeyBoard" id="keyPrevious"> previous music </p>
+				<p id="nextM"> n </p>
+				<p class="indicationKeyBoard" id="keyNext"> next music </p>   
 				<p id="more"> + </p>
 				<p class="indicationKeyBoard" id="keyNbParticles"> particles </p>
 				<p id="less"> - </p>
-				<div id="instructions" class="instructionsModeMouse"> <p> i </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
-				<div id="screenshot" class="instructionsModeMouse"><p>s</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
+				<div id="instructions" id="instructionWeb" class="instructionsModeMouse"> <p> i </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
+				<div id="screenshot" id="screenshotWeb" class="instructionsModeMouse"><p>s</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
 				<div id="mouseMode"><p> mouse </p></div>
 				<a id="webcamMode" href="./test.php" class="otherMode">
 					<p> webcam </p>
@@ -102,7 +116,7 @@
 				var hiden = false;
 				var played = false; 
 				var percentage = 0;
-				var son = ["sound/acdc-back-in-black.mp3", "sound/daft-punk-aroud-the-world.mp3", "sound/take-fiveithe-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
+				var son = ["sound/acdc-back-in-black.mp3", "sound/daft-punk-aroud-the-world.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
 				var nameSon = ["Back in black by ACDC", "Around the world by Daft Punk", "Take five by Dave Brubeck ", "The four Seasons by Vivaldi", "When doves cry by Prince"];
 				var indexSon;
 				renderer = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
@@ -271,27 +285,27 @@
 			{
 				var e = document.getElementById("musique_selection").value;
 				switch(e){
-					case "metal":
+					case "ACDC":
 						stream = son[0];
 						indexSon = 0;
 					break;
 
-					case "electro": 
+					case "Daft": 
 						stream = son[1];
 						indexSon = 1;
 					break;
 
-					case "pop": 
+					case "Prince": 
 						stream = son[4];
 						indexSon = 4;
 					break;
 
-					case "jazz": 
+					case "Dave": 
 						stream = son[2];
 						indexSon = 2;
 					break;
 
-					case "classique": 
+					case "Vivaldi": 
 						stream = son[3];
 						indexSon = 3;
 					break;
@@ -335,7 +349,101 @@
 						sound.pause();
 						return;
 				}
+				else if (event.isComposing || event.keyCode === 80) {
+					if(indexSon > 0)
+					{
+						indexSon--;
+						stream = son[indexSon];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+						});
 
+						if(!played){
+							played = true;
+						}
+						displayNameMusic();
+					}
+					else if(indexSon < 1)
+					{
+						indexSon = son.length - 1;
+						stream = son[indexSon];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+						});
+						if(!played){
+							played = true;
+						}
+						displayNameMusic();
+					}
+					return;
+				}
+				else if (event.isComposing || event.keyCode === 78) {
+					if(indexSon < son.length - 1)
+					{
+						indexSon++;
+						stream = son[indexSon]; 
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+							displayNameMusic();
+						});
+						if(!played){
+							played = true;
+						}
+
+					}
+					else if(indexSon == son.length-1) {
+						indexSon = 0;
+						stream = son[0];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+							displayNameMusic();
+						});
+						if(!played){
+							played = true;
+						}
+					}
+					return;
+				}
+				else if (event.isComposing || event.keyCode === 32) {
+						//sound.pause(); play or pause
+						if(played)
+						{
+							stopMusic();
+						}
+						else {
+							playMusic();
+						}
+						played = !played;
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 68) {
+						//right
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 76) {
+						//left
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 83) {
+						//low
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 90) {
+						//top
+						return;
+				}
 			});
 
 		/*
@@ -343,61 +451,6 @@
 			// gestion de l'audio : mettre en pause, reprendre la lecture, changer de musique
 			//
 		*/
-			document.getElementById("manageSound").addEventListener('click', function(event) {
-				if(played)
-				{
-					stopMusic();
-				}
-				else {
-					playMusic();
-				}
-				played = !played;
-			});
-
-
-			document.getElementById("nextSound").addEventListener('click', function(event) {
-				if(indexSon < son.length - 1)
-				{
-					indexSon++;
-					stream = son[indexSon]; 
-				}
-				else {
-					indexSon = 0;
-					stream = son[0];
-				}
-				sound.stop();
-				audioLoader.load(stream, function( buffer ) {
-					sound.setBuffer( buffer );
-					sound.setLoop(true);
-					sound.play();
-					if(!played){
-						played = true;
-					}
-				});
-				displayNameMusic();
-			});
-
-			document.getElementById("previousSound").addEventListener('click', function(event) {
-				if(indexSon > 0)
-				{
-					indexSon--;
-					stream = son[indexSon];
-				}
-				else {
-					indexSon = son.length - 1;
-					stream = son[indexSon];
-				}
-				sound.stop();
-				audioLoader.load(stream, function( buffer ) {
-					sound.setBuffer( buffer );
-					sound.setLoop(true);
-					sound.play();
-					if(!played){
-						played = true;
-					}
-				});
-				displayNameMusic();
-			});
 
 			//affiche le nom de la musique jouée
 			function displayNameMusic()
@@ -469,7 +522,6 @@
 					sound.setLoop(true);
 					sound.play();
 				});
-
 				getAudioData(dataArray);
 
 			});
@@ -500,8 +552,6 @@
 				scene.remove(tube);
 			    requestAnimationFrame(animate);
 			}
-
-
 
 		</script>
 		<script src="js/appear.js"></script>

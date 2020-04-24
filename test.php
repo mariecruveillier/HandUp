@@ -62,9 +62,9 @@
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
-				<div id="instructions" class="instructionsModeWebcam" ><p> instructions </p></div>
+				<div id="instructions"  class="instructionsModeWebcam" ><p> instructions </p></div>
 				<div id="screenshot" class="instructionsModeWebcam" ><p>screenshot</p></div>
-				<a id="mouseMode" href="./test2.php" class="otherMode">
+				<a id="mouseMode" href="./test2.php" class="otherMode">  
 					<p> mouse </p>
 				</a>
 				<div id="webcamMode"><p> webcam </p></div>
