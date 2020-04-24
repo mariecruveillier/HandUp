@@ -336,7 +336,7 @@
 		  			}
     			return;
 		  		}
-		  		else if (event.isComposing || event.keyCode === 83) {
+		  		else if (event.isComposing || event.keyCode === 67) {
 						html2canvas(document.querySelector("canvas")).then(canvas => {
 							var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 							window.location.href=image;	
@@ -422,7 +422,7 @@
 						{
 							stopMusic();
 						}
-						else {
+						else if(!played){
 							playMusic();
 						}
 						played = !played;
@@ -481,14 +481,14 @@
 
 			function stopMusic(){
 				var stopIMG = document.getElementById("StopIMG");
-				objAppear(stopIMG);
 				sound.pause();
+				stopIMG.style.display = "flex";
 			}
 
 			function playMusic(){
 				sound.play();
 				var stopIMG = document.getElementById("StopIMG");
-				lessTheOppacity(stopIMG);
+				stopIMG.style.display = "none";
 			}
 
 		/*
