@@ -247,7 +247,6 @@ canvas {
 
 
 #instructions, #screenshot, .indicationKeyBoard{
-	height: %;
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -509,11 +508,14 @@ p{
 }
 
 #button2{
-	margin-left: 20%;
+	margin-top: 50%;
+	margin-left: 30%;
+	position: absolute;
 }
 
 #button2:hover{
-	width: 120%;
+	width: 105%;
+	margin-left: 36%;
 }
 
 option {
@@ -525,6 +527,7 @@ option {
 	background-color: black;
 	position : absolute;
 	width: 100%;
+	height: auto;
 }
 
 
@@ -603,11 +606,11 @@ box-shadow:0 0 .125rem #aaa}
 
 #panelInstructions{
 	width: 50%;
-	height :50%;
+	height :55%;
 	display: none;
 	z-index: 6;
 	background-color: #404040;
-	border-radius: 3em;
+	border-radius: 1.5em;
 	position: absolute;
 }
 

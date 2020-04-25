@@ -69,7 +69,7 @@
 				<div id="rotLow"> <img id="imgRotLow" src="img/arrow_low.png"></div>
 				<div id="instructions"  class="instructionsModeWebcam" ><p> instructions </p></div>
 				<div id="screenshot" class="instructionsModeWebcam" ><p>screenshot</p></div>
-				<a id="mouseMode" href="./test2.php" class="otherMode">  
+				<a id="mouseMode" href="./HandUp.mouse.php" class="otherMode">  
 					<p> mouse </p>
 				</a>
 				<div id="webcamMode"><p> webcam </p></div>
@@ -493,6 +493,7 @@
 				var stopIMG = document.getElementById("StopIMG");
 				stopIMG.style.display = "none";
 			}
+
 
 		/*
 			//

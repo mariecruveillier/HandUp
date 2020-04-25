@@ -3,14 +3,23 @@ html{
 	height:100%;
 }
 
+
 body{
-	background-color:#404040;
 	width:100%;
 	height:100%;
 }
 
+#bg{
+	position:absolute;
+	width:90%;
+	height:auto;
+	margin-top: 3%;
+	margin-left: 4.5%;
+	display:block;
+}
+
 #imgHead{
-	top: 5%;
+	top: -15%;
 	display : flex;
 	position: relative;
 	left:15%;
@@ -25,7 +34,7 @@ body{
 #goToChooseMusic{
 	display: flex;
 	position: relative;
-	top: 21%;
+	top: 35%;
 	left: 45%;
 	width: 17%;
 	height:auto;
@@ -37,6 +46,8 @@ body{
 
 #text{
 	top: 15%;
+	width:80%;
+	margin-left:10%;
 	display: flex;
 	color:white;
 	text-align :justify;

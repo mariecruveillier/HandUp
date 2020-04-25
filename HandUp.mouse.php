@@ -21,7 +21,9 @@
 				<div id="mouse">
 					<img src="img/mouse.png">
 					<p> 
-					 	Depending on the position of the mouse, loudness of music, the colors and the opacity of the particles change. The rest of the interactions is triggered by keyboard keys.
+
+						Depending on the position of the mouse, loudness of music, the colors and the opacity of the particles change. The rest of the interactions is triggered by keyboard keys.
+
 					</p>
 				</div>
 				<div id="hand">
@@ -35,6 +37,7 @@
 					<p> other interactions : 
 						<br>
 						look at around the camera, make a screenshot of the render, change the number of particles, stop, play and change the music
+						
 					</p>
 				</div>
 			</div>
@@ -43,9 +46,10 @@
 		<div id="menu">
 			<div id="positionMouseX"></div>
 			<div id="positionMouseY"></div>
-			<div id="button1"><p>
+			<div id="button1">
+
 				<select name="musique" id="musique_selection">
-				    <option value="">--Please choose a song--</option>
+				    <option value="">--Please choose an artist--</option>
 				    <option value="ACDC">ACDC</option>
 				    <option value="Vivaldi">Vivaldi</option>
 				    <option value="Prince">Prince</option>
@@ -57,40 +61,47 @@
 		</div>
 		<div id="StopIMG"> <img src="img/pause.png"></div> 
 		<div id="nuageDePoints">
-			<div id="displayedVolume"></div>
+			<div id="displayedVolume"></div> 
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
-			<div id="hideCam" class="camModeWebcam">
+			<div id="hideCam" class="camModeMouse">
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
-				<div id="rotLeft"> <img id="imgRotLeft" src="img/arrow_left.png"></div>
-				<div id="rotRight"> <img id="imgRotRight" src="img/arrow_white.png"></div>
-				<div id="rotTop"> <img id="imgRotTop" src="img/arrow_top.png"></div>
-				<div id="rotLow"> <img id="imgRotLow" src="img/arrow_low.png"></div>
-				<div id="instructions"  class="instructionsModeWebcam" ><p> instructions </p></div>
-				<div id="screenshot" class="instructionsModeWebcam" ><p>screenshot</p></div>
-				<a id="mouseMode" href="./test2.php" class="otherMode">  
-					<p> mouse </p>
+				<p id="top"> [z] </p>
+				<p class="indicationKeyBoard" id="keyTop"> top </p>
+				<p id="low"> [s] <p>
+				<p class="indicationKeyBoard" id="keyLow"> low </p>
+				<p id="left"> [q] </p>
+				<p class="indicationKeyBoard" id="keyLeft"> left </p>
+				<p id="right"> [d] </p>
+				<p class="indicationKeyBoard" id="keyRight"> right </p>
+				<p id="playPause"> [ ]  </p>
+				<p class="indicationKeyBoard" id="keyPlayPause"> play/pause</p>
+				<p id="previousM"> [p] </p>
+				<p class="indicationKeyBoard" id="keyPrevious"> previous music </p>
+				<p id="nextM"> [n] </p>
+				<p class="indicationKeyBoard" id="keyNext"> next music </p>   
+				<p id="more"> [+] </p>
+				<p class="indicationKeyBoard" id="keyNbParticles"> particles </p>
+				<p id="less"> [-] </p>
+				<div id="instructions" id="instructionWeb" class="instructionsModeMouse"> <p> [i] </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
+				<div id="screenshot" id="screenshotWeb" class="instructionsModeMouse"><p>[c]</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
+				<div id="mouseMode"><p> mouse </p></div>
+				<a id="webcamMode" href="./HandUp.cam.php" class="otherMode">
+					<p> webcam </p>
 				</a>
-				<div id="webcamMode"><p> webcam </p></div>
-				<div id="manageSound" class="manageFromMouse"></div>
-				<div id="nextSound" class="manageFromMouse"></div>
-				<div id="previousSound" class="manageFromMouse"></div>
+				<div id="manageSound" class="manageFromKeyboard"></div>
+				<div id="nextSound" class="manageFromKeyboard"></div>
+				<div id="previousSound" class="manageFromKeyboard"></div>
 				<div id="infoTrack"></div>
-				<div id="loading"> <img src
-					="img/loading.png"> </div>
-
-				<div id="nbPnts">
-					<img id="imgCircles" src="img/circles.png" alt="nombre de points"/>
-					<input type="range" id="DetailCircleRange" class='range_css'/>
-				</div>
+				<div id="loading"> <img src="img/loading.png"> </div>
 				<video id="video" src="" opacity="0"></video>
 
 			</div>
 
 			<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
-			<script type="text/javascript" src="js/app.js"></script>
 			
+
 			<script>
 				const html2canvas = window.html2canvas;
 				var ww = window.innerWidth, wh = window.innerHeight;
@@ -106,10 +117,10 @@
 				var posXmouse = 0;
 				var posYmouse = 0.5;
 				var posYmouseMin = 0.5;
-				var movementX =0;
-				var movementY = 0;
 				var hiden = false;
-				var played = false; 
+				var played = false;
+				var movementX = 0;
+				var movementY = 0;
 				var percentage = 0;
 				var son = ["sound/acdc-back-in-black.mp3", "sound/daft.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
 				var nameSon = ["Back in black by ACDC", "Around the world by Daft Punk", "Take five by Dave Brubeck ", "The four Seasons by Vivaldi", "When doves cry by Prince"];
@@ -119,16 +130,16 @@
 
 				scene = new THREE.Scene();
 				scene.fog = new THREE.Fog(0xFFFFFF, 1, 2);
+				renderer.setSize( ww, wh,false);
 
 				// camera
 				camera = new THREE.PerspectiveCamera(45, window.screen.width / window.screen.height, 0.001, 100);
 				camera.position.z = 400;
-				renderer.setSize( ww, wh,false);
 
 				var scene = new THREE.Scene();
 
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
-
+				//controls.enabled = true; 
 				loader = new THREE.ObjectLoader();
 				var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 				var audioData = [];
@@ -171,7 +182,6 @@
 				  points[i] = new THREE.Vector3(x, y, z);
 				}
 				
-				hideCam.style.backgroundImage = "url('img/no_video.png')";
 				document.getElementById("manageSound").style.backgroundImage = "url('img/playBlanc.png')";
 				document.getElementById("previousSound").style.backgroundImage = "url('img/lastBlanch.png')";
 				document.getElementById("nextSound").style.backgroundImage = "url('img/nextBlanc.png')";
@@ -217,6 +227,19 @@
 					}
 				}
 
+				/*
+					//
+					// Instruction:close
+					//
+				*/
+
+			document.getElementById('close').addEventListener('click', function(event)
+			{
+				document.getElementById('panelInstructions').style.display = "none";
+				document.getElementById('nuageDePoints').style.display = "flex";
+				sound.play();
+			});
+
 
 				/*
 					//
@@ -239,7 +262,7 @@
 
 					  posXmouse = document.getElementById("positionMouseX").innerText;
 					  posXmouseMin = parseInt(posXmouse,32);
-					  posXmouseMin *= 0.001;
+					  posXmouseMin *= 0.01;
 					  posXmouseMin = Math.round(posXmouseMin);
 					  setVolume();
 
@@ -247,8 +270,7 @@
 					  {
 					  	getVolume();
 					  	//document.getElementById("loading").style.display = "none";
-					  	var color = new THREE.Color("hsl(" + (index * 360 * 4) + "," + (posXmouseMin*5) + "% ," +  (posXmouseMin*8) + "%)");
-
+					  	var color = new THREE.Color("hsl(" + (index * 360 * 4) + "," + (posXmouseMin) + "% ," +  (posXmouseMin) + "%)");
 					  	// Loop for the amount of particles we want along each circle
 						for (var j = 0; j < circlesDetail; j++) {
 						    var position = p.clone();// Clone the position of the point in the center
@@ -320,72 +342,38 @@
 
 		/*
 			//
-			// Permet de changer le nombre de points par cercle
+			// Permet de changer le nombre de points par cercle, save png, instructions
 			//
 		*/
-			document.getElementById('DetailCircleRange').addEventListener('click', function (event) {
-				changeDetailCircles();
-			});
-
-
-			function changeDetailCircles()
-			{
-		  		circlesDetail = document.getElementById("DetailCircleRange").value;
-		  		circlesDetail *= 2;
-			}
-
-		/*
-			//
-			// gestion de l'audio : mettre en pause, reprendre la lecture, changer de musique
-			//
-		*/
-			document.getElementById("manageSound").addEventListener('click', function(event) {
-				if(played)
-				{
-					stopMusic();
-				}
-				else {
-					playMusic();
-				}
-				played = !played;
-			});
-
-
-			document.getElementById("nextSound").addEventListener('click', function(event) {
-					if(indexSon < son.length - 1)
-					{
-						indexSon++;
-						stream = son[indexSon]; 
-						sound.stop();
-						audioLoader.load(stream, function( buffer ) {
-							sound.setBuffer( buffer );
-							sound.setLoop(true);
-							sound.play();
-							displayNameMusic();
+			//mode clavier
+			document.addEventListener("keydown", event => {
+  				if (event.isComposing || event.keyCode === 107) {
+  					if (circlesDetail<1200){
+  	    				circlesDetail  += 50;					
+  					}
+    			return;
+		  		}
+		  		else if (event.isComposing || event.keyCode === 109) {
+		  			if(circlesDetail>50)
+		  			{
+	    				circlesDetail  -= 50;	  				
+		  			}
+    			return;
+		  		}
+		  		else if (event.isComposing || event.keyCode === 67) {
+						html2canvas(document.querySelector("canvas")).then(canvas => {
+							var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+							window.location.href=image;	
 						});
-						if(!played){
-							played = true;
-						}
-
-					}
-					else if(indexSon == son.length-1) {
-						indexSon = 0;
-						stream = son[0];
-						sound.stop();
-						audioLoader.load(stream, function( buffer ) {
-							sound.setBuffer( buffer );
-							sound.setLoop(true);
-							sound.play();
-							displayNameMusic();
-						});
-						if(!played){
-							played = true;
-						}
-					}
-					console.log(indexSon);
-				});
-
-			document.getElementById("previousSound").addEventListener('click', function(event) {
+						return;
+    			}
+    			else if (event.isComposing || event.keyCode === 73) {
+						document.getElementById('panelInstructions').style.display = "flex";
+						document.getElementById('nuageDePoints').style.display = "none";
+						sound.pause();
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 80) {
 					if(indexSon > 0)
 					{
 						indexSon--;
@@ -417,49 +405,99 @@
 						}
 						displayNameMusic();
 					}
-					console.log(indexSon);
+					return;
+				}
+				else if (event.isComposing || event.keyCode === 78) {
+					if(indexSon < son.length - 1)
+					{
+						indexSon++;
+						stream = son[indexSon]; 
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+							displayNameMusic();
+						});
+						if(!played){
+							played = true;
+						}
+
+					}
+					else if(indexSon == son.length-1) {
+						indexSon = 0;
+						stream = son[0];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+							displayNameMusic();
+						});
+						if(!played){
+							played = true;
+						}
+					}
+					return;
+				}
+				else if (event.isComposing || event.keyCode === 32) {
+						//sound.pause(); play or pause
+						if(played)
+						{
+							stopMusic();
+						}
+						else if(!played){
+							playMusic();
+						}
+						played = !played;
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 68) {
+					if(movementX > -40)
+					{
+						movementX--;
+					}
+						console.log(movementX);
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 81) {
+						if(movementX<40)
+						{
+							movementX++;
+						}
+						console.log(movementX);
+						//left
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 83) {
+						if(movementY> -10)
+						{
+							movementY--;
+						}
+						//low
+						return;
+				}
+				else if (event.isComposing || event.keyCode === 90) {
+						if(movementY < 10)
+						{
+							movementY++;
+						}
+						//top
+						return;
+				}
 			});
+
+		/*
+			//
+			// gestion de l'audio : mettre en pause, reprendre la lecture, changer de musique
+			//
+		*/
 
 			//affiche le nom de la musique jouée
 			function displayNameMusic()
 			{
 				document.getElementById("displayNameMusic").innerHTML = nameSon[indexSon];
 			}
-
-		/*
-			//
-			// deplacement
-			//
-		*/
-
-		document.getElementById('rotTop').addEventListener('click', function (event) {
-			if(movementY < 10)
-			{
-				movementY++;
-			}
-		});
-
-		document.getElementById('rotLow').addEventListener('click', function (event) {
-			if(movementY> -10)
-			{
-				movementY--;
-			}
-		});
-
-		document.getElementById('rotLeft').addEventListener('click', function (event) {
-			if(movementX<40)
-			{
-				movementX++;
-			}
-		});
-
-		document.getElementById('rotRight').addEventListener('click', function (event) {
-			if(movementX > -40)
-			{
-				movementX--;
-			}
-		});
-
 
 		/* 
 			//
@@ -494,35 +532,14 @@
 				stopIMG.style.display = "none";
 			}
 
+
 		/*
 			//
 			// Mouse 
 			//
 		*/
-			document.getElementById('webcamMode').style.border = "0.1em solid #404040";
-			document.getElementById('webcamMode').style.backgroundColor = "#2e2e2e";
-
-
-		/*
-			//
-			// Instructions
-			//
-		*/
-
-			document.getElementById('instructions').addEventListener('click', function(event)
-			{
-				document.getElementById('panelInstructions').style.display = "flex";
-				document.getElementById('nuageDePoints').style.display = "none";
-				sound.pause();
-			});
-
-			document.getElementById('close').addEventListener('click', function(event)
-			{
-				document.getElementById('panelInstructions').style.display = "none";
-				document.getElementById('nuageDePoints').style.display = "flex";
-				sound.play();
-			});
-
+			document.getElementById('mouseMode').style.border = "0.1em solid #404040";
+			document.getElementById('mouseMode').style.backgroundColor = "#2e2e2e";
 
 		/*
 			//
@@ -547,7 +564,6 @@
 					sound.setLoop(true);
 					sound.play();
 				});
-
 				getAudioData(dataArray);
 
 			});
@@ -563,13 +579,14 @@
 				});
 
 			function render(){
+
 				  analyser.getFrequencyData();
 				  percentage += 0.0005;
 				  var p1 = path.getPointAt(percentage % 1);
 				  var p2 = path.getPointAt((percentage + 0.01) % 1);
-				  camera.position.set(p1.x, p1.y, p1.z);
 				  p2.x += movementX;
 				  p2.y += movementY;
+				  camera.position.set(p1.x, p1.y, p1.z);
 				  camera.lookAt(p2);
 				  renderer.render(scene, camera);
 			}
@@ -581,11 +598,10 @@
 			    requestAnimationFrame(animate);
 			}
 
+
 		</script>
 		<script src="js/appear.js"></script>
-		<script src="js/hideCam.js"></script>
 		<script src="js/changeVolume.js"></script>
-		<script src="js/screenshot.js"></script>
 	</div>
 	</body>
 </html>
