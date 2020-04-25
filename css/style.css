@@ -69,7 +69,7 @@ canvas {
 
 #panelMenu{
 	width : 15%;
-	height: 600px;
+	height: 620px;
 	background-color: #2e2e2e;
 	z-index: 4;
 	position: absolute;
@@ -93,7 +93,7 @@ canvas {
   	justify-content: center;
 }
 
-#displayNameMusic{
+#displayNameMusic, #rotLeft, #rotRight, #rotTop, #rotLow{
 	display : flex;
 	font-size: 1.5em;
 	color : black;
@@ -101,6 +101,47 @@ canvas {
 	font-family: 'Roboto Mono', monospace;
 }
 
+#rotLeft, #rotRight, #rotTop, #rotLow{
+	background-color: black;
+	z-index: 6;
+	position: absolute;
+	margin-top: 207%;
+	width: 13%;
+	height: 5%;
+	item-align: ;
+}
+
+#imgRotTop, #imgRotLow{
+	width: 40%;
+	height: 60%;
+	margin: auto;
+}
+
+#imgRotLeft, #imgRotRight{
+	width: 40%;
+	height: 60%;
+	margin: auto;
+}
+
+#rotRight{
+	margin-left: 20%;
+}
+
+#rotLeft{
+	margin-left: 35%;
+}
+
+#rotTop{
+	margin-left: 50%;
+}
+
+#rotLow{
+	margin-left: 65%;
+}
+
+#rotLeft:hover, #rotRight:hover, #rotTop:hover, #rotLow:hover{
+	background-color: #20F9DC;
+}
 
 #hCam{
 	background-size: 40% 15px;
@@ -409,6 +450,10 @@ canvas {
 	background-repeat: no-repeat;
   	background-position: center; 
   	display: none;
+}
+
+#rotationObj{
+
 }
 
 #previousSound{

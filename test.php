@@ -58,12 +58,16 @@
 		</div>
 		<div id="StopIMG"> <img src="img/pause.png"></div> 
 		<div id="nuageDePoints">
-			<div id="displayedVolume"></div> 
+			<div id="displayedVolume"></div>
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
 			<div id="hideCam" class="camModeWebcam">
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
+				<div id="rotLeft"> <img id="imgRotLeft" src="img/arrow_left.png"></div>
+				<div id="rotRight"> <img id="imgRotRight" src="img/arrow_white.png"></div>
+				<div id="rotTop"> <img id="imgRotTop" src="img/arrow_top.png"></div>
+				<div id="rotLow"> <img id="imgRotLow" src="img/arrow_low.png"></div>
 				<div id="instructions"  class="instructionsModeWebcam" ><p> instructions </p></div>
 				<div id="screenshot" class="instructionsModeWebcam" ><p>screenshot</p></div>
 				<a id="mouseMode" href="./test2.php" class="otherMode">  
@@ -74,13 +78,13 @@
 				<div id="nextSound" class="manageFromMouse"></div>
 				<div id="previousSound" class="manageFromMouse"></div>
 				<div id="infoTrack"></div>
-				<div id="loading"> <img src="img/loading.png"> </div>
+				<div id="loading"> <img src
+					="img/loading.png"> </div>
 
 				<div id="nbPnts">
 					<img id="imgCircles" src="img/circles.png" alt="nombre de points"/>
 					<input type="range" id="DetailCircleRange" class='range_css'/>
 				</div>
-
 				<video id="video" src="" opacity="0"></video>
 
 			</div>
@@ -103,6 +107,8 @@
 				var posXmouse = 0;
 				var posYmouse = 0.5;
 				var posYmouseMin = 0.5;
+				var movementX =0;
+				var movementY = 0;
 				var hiden = false;
 				var played = false; 
 				var percentage = 0;
@@ -416,6 +422,41 @@
 				document.getElementById("displayNameMusic").innerHTML = nameSon[indexSon];
 			}
 
+		/*
+			//
+			// deplacement
+			//
+		*/
+
+		document.getElementById('rotTop').addEventListener('click', function (event) {
+			if(movementY < 10)
+			{
+				movementY++;
+			}
+		});
+
+		document.getElementById('rotLow').addEventListener('click', function (event) {
+			if(movementY> -10)
+			{
+				movementY--;
+			}
+		});
+
+		document.getElementById('rotLeft').addEventListener('click', function (event) {
+			if(movementX<40)
+			{
+				movementX++;
+			}
+		});
+
+		document.getElementById('rotRight').addEventListener('click', function (event) {
+			if(movementX > -40)
+			{
+				movementX--;
+			}
+		});
+
+
 		/* 
 			//
 			//mettre en pause le son et faire afficher l'image de pause
@@ -524,6 +565,8 @@
 				  var p1 = path.getPointAt(percentage % 1);
 				  var p2 = path.getPointAt((percentage + 0.01) % 1);
 				  camera.position.set(p1.x, p1.y, p1.z);
+				  p2.x += movementX;
+				  p2.y += movementY;
 				  camera.lookAt(p2);
 				  renderer.render(scene, camera);
 			}

@@ -485,13 +485,14 @@
 			//
 		*/
 
+
 function updateRotation()
 {
-/*
+	/*
   	controls.enabled=false;
     camera.rotation.x+=0.2;
     console.log(camera.rotation.x);
-*/
+   	*/
 }
 
 /*
