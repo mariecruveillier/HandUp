@@ -21,19 +21,21 @@
 				<div id="mouse">
 					<img src="img/mouse.png">
 					<p> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi dui, mollis non nisi in, convallis fringilla est. Donec et efficitur ligula. Phasellus porttitor est a fermentum interdum. Vestibulum eu sagittis sem.
+					 	En fonction de la position de la souris selon la largeur de l'écran, l'intensité sonore, les couleurs et l'opacité des particules évoluent.
+					 	Le reste des intéractions s'effectuent à partir du clavier d'ordinateur.
 					</p>
 				</div>
 				<div id="hand">
 					<img src="img/hand.png">
 					<p> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi dui, mollis non nisi in, convallis fringilla est. Donec et efficitur ligula. Phasellus porttitor est a fermentum interdum. Vestibulum eu sagittis sem.
+						En fonction de la position de la main dans l'espace, l'intensité sonore, les couleurs et l'opacité des particules évoluent. 
+						Le reste des intéractions s'effectuent à partir de click de souris. 
 					</p>
 				</div>
 				<div id="rangeCircle">
 					<img src="img/circles.png">
 					<p> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi dui, mollis non nisi in, convallis fringilla est. Donec et efficitur ligula. Phasellus porttitor est a fermentum interdum. Vestibulum eu sagittis sem.
+						Les intéractions possibles : faire des rotations, enregistrer le rendu, changer le nombres de particules, arrêter la musique, changer de musique, changer de mode d'intéraction
 					</p>
 				</div>
 			</div>
@@ -45,16 +47,16 @@
 			<div id="button1"><p>
 				<select name="musique" id="musique_selection">
 				    <option value="">--Please choose a song--</option>
-				    <option value="hard rock">ACDC</option>
-				    <option value="classique">Vivaldi</option>
-				    <option value="pop">Prince</option>
-				    <option value="jazz"> Dave Brubeck </option>
-				    <option value="electro"> Daft Punk </option>
+				    <option value="ACDC">ACDC</option>
+				    <option value="Vivaldi">Vivaldi</option>
+				    <option value="Prince">Prince</option>
+				    <option value="Dave"> Dave Brubeck </option>
+				    <option value="Daft"> Daft Punk </option>
 				</select>
 		</div>
 			<div id="button2"> <img src="img/letsgo.png" width="80%"> </div>
 		</div>
-		
+		<div id="StopIMG"> <img src="img/pause.png"></div> 
 		<div id="nuageDePoints">
 			<div id="displayedVolume"></div> 
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
@@ -72,7 +74,6 @@
 				<div id="nextSound" class="manageFromMouse"></div>
 				<div id="previousSound" class="manageFromMouse"></div>
 				<div id="infoTrack"></div>
-				<div id="StopIMG"> <img src="img/pause.png"></div> 
 				<div id="loading"> <img src="img/loading.png"> </div>
 
 				<div id="nbPnts">
@@ -105,7 +106,7 @@
 				var hiden = false;
 				var played = false; 
 				var percentage = 0;
-				var son = ["sound/acdc-back-in-black.mp3", "sound/daft-punk-aroud-the-world.mp3", "sound/take-fiveithe-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
+				var son = ["sound/acdc-back-in-black.mp3", "sound/daft.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
 				var nameSon = ["Back in black by ACDC", "Around the world by Daft Punk", "Take five by Dave Brubeck ", "The four Seasons by Vivaldi", "When doves cry by Prince"];
 				var indexSon;
 				renderer = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
@@ -276,27 +277,27 @@
 			{
 				var e = document.getElementById("musique_selection").value;
 				switch(e){
-					case "metal":
+					case "ACDC":
 						stream = son[0];
 						indexSon = 0;
 					break;
 
-					case "electro": 
+					case "Daft": 
 						stream = son[1];
 						indexSon = 1;
 					break;
 
-					case "pop": 
+					case "Prince": 
 						stream = son[4];
 						indexSon = 4;
 					break;
 
-					case "jazz": 
+					case "Dave": 
 						stream = son[2];
 						indexSon = 2;
 					break;
 
-					case "classique": 
+					case "Vivaldi": 
 						stream = son[3];
 						indexSon = 3;
 					break;
@@ -341,47 +342,72 @@
 
 
 			document.getElementById("nextSound").addEventListener('click', function(event) {
-				if(indexSon < son.length - 1)
-				{
-					indexSon++;
-					stream = son[indexSon]; 
-				}
-				else {
-					indexSon = 0;
-					stream = son[0];
-				}
-				sound.stop();
-				audioLoader.load(stream, function( buffer ) {
-					sound.setBuffer( buffer );
-					sound.setLoop(true);
-					sound.play();
-					if(!played){
-						played = true;
+					if(indexSon < son.length - 1)
+					{
+						indexSon++;
+						stream = son[indexSon]; 
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+							displayNameMusic();
+						});
+						if(!played){
+							played = true;
+						}
+
 					}
+					else if(indexSon == son.length-1) {
+						indexSon = 0;
+						stream = son[0];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+							displayNameMusic();
+						});
+						if(!played){
+							played = true;
+						}
+					}
+					console.log(indexSon);
 				});
-				displayNameMusic();
-			});
 
 			document.getElementById("previousSound").addEventListener('click', function(event) {
-				if(indexSon > 0)
-				{
-					indexSon--;
-					stream = son[indexSon];
-				}
-				else {
-					indexSon = son.length - 1;
-					stream = son[indexSon];
-				}
-				sound.stop();
-				audioLoader.load(stream, function( buffer ) {
-					sound.setBuffer( buffer );
-					sound.setLoop(true);
-					sound.play();
-					if(!played){
-						played = true;
+					if(indexSon > 0)
+					{
+						indexSon--;
+						stream = son[indexSon];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+						});
+
+						if(!played){
+							played = true;
+						}
+						displayNameMusic();
 					}
-				});
-				displayNameMusic();
+					else if(indexSon < 1)
+					{
+						indexSon = son.length - 1;
+						stream = son[indexSon];
+						sound.stop();
+						audioLoader.load(stream, function( buffer ) {
+							sound.setBuffer( buffer );
+							sound.setLoop(true);
+							sound.play();
+						});
+						if(!played){
+							played = true;
+						}
+						displayNameMusic();
+					}
+					console.log(indexSon);
 			});
 
 			//affiche le nom de la musique jouée
@@ -413,14 +439,14 @@
 
 			function stopMusic(){
 				var stopIMG = document.getElementById("StopIMG");
-				objAppear(stopIMG);
 				sound.pause();
+				stopIMG.style.display = "flex";
 			}
 
 			function playMusic(){
 				sound.play();
 				var stopIMG = document.getElementById("StopIMG");
-				lessTheOppacity(stopIMG);
+				stopIMG.style.display = "none";
 			}
 
 

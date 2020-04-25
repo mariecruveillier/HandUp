@@ -1,6 +1,10 @@
-manage button mode souris ou webcam
+document.getElementById('mouseMode').addEventListener('click', function(event) {
+		mouseMode = 1;
+		webcamMode = 0;
+		console.log(mouseMode);
+});
 
-bool 
-function setBackgroundColor(){
-	if()
-}
+
+document.getElementById('webcamMode').addEventListener('click', function(event) {
+	
+});

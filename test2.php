@@ -21,19 +21,21 @@
 				<div id="mouse">
 					<img src="img/mouse.png">
 					<p> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi dui, mollis non nisi in, convallis fringilla est. Donec et efficitur ligula. Phasellus porttitor est a fermentum interdum. Vestibulum eu sagittis sem.
+					 	En fonction de la position de la souris selon la largeur de l'écran, l'intensité sonore, les couleurs et l'opacité des particules évoluent.
+					 	Le reste des intéractions s'effectuent à partir du clavier d'ordinateur.
 					</p>
 				</div>
 				<div id="hand">
 					<img src="img/hand.png">
 					<p> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi dui, mollis non nisi in, convallis fringilla est. Donec et efficitur ligula. Phasellus porttitor est a fermentum interdum. Vestibulum eu sagittis sem.
+						En fonction de la position de la main dans l'espace, l'intensité sonore, les couleurs et l'opacité des particules évoluent. 
+						Le reste des intéractions s'effectuent à partir de click de souris. 
 					</p>
 				</div>
 				<div id="rangeCircle">
 					<img src="img/circles.png">
 					<p> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi dui, mollis non nisi in, convallis fringilla est. Donec et efficitur ligula. Phasellus porttitor est a fermentum interdum. Vestibulum eu sagittis sem.
+						Les intéractions possibles : faire des rotations, enregistrer le rendu, changer le nombres de particules, arrêter la musique, changer de musique, changer de mode d'intéraction
 					</p>
 				</div>
 			</div>
@@ -54,7 +56,7 @@
 		</div>
 			<div id="button2"> <img src="img/letsgo.png" width="80%"> </div>
 		</div>
-		
+		<div id="StopIMG"> <img src="img/pause.png"></div> 
 		<div id="nuageDePoints">
 			<div id="displayedVolume"></div> 
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
@@ -80,7 +82,7 @@
 				<p class="indicationKeyBoard" id="keyNbParticles"> particles </p>
 				<p id="less"> - </p>
 				<div id="instructions" id="instructionWeb" class="instructionsModeMouse"> <p> i </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
-				<div id="screenshot" id="screenshotWeb" class="instructionsModeMouse"><p>s</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
+				<div id="screenshot" id="screenshotWeb" class="instructionsModeMouse"><p>c</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
 				<div id="mouseMode"><p> mouse </p></div>
 				<a id="webcamMode" href="./test.php" class="otherMode">
 					<p> webcam </p>
@@ -89,7 +91,6 @@
 				<div id="nextSound" class="manageFromKeyboard"></div>
 				<div id="previousSound" class="manageFromKeyboard"></div>
 				<div id="infoTrack"></div>
-				<div id="StopIMG"> <img src="img/pause.png"></div> 
 				<div id="loading"> <img src="img/loading.png"> </div>
 				<video id="video" src="" opacity="0"></video>
 
@@ -97,7 +98,7 @@
 
 			<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
 			
-			
+
 			<script>
 				const html2canvas = window.html2canvas;
 				var ww = window.innerWidth, wh = window.innerHeight;
@@ -116,7 +117,7 @@
 				var hiden = false;
 				var played = false; 
 				var percentage = 0;
-				var son = ["sound/acdc-back-in-black.mp3", "sound/daft-punk-aroud-the-world.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
+				var son = ["sound/acdc-back-in-black.mp3", "sound/daft.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
 				var nameSon = ["Back in black by ACDC", "Around the world by Daft Punk", "Take five by Dave Brubeck ", "The four Seasons by Vivaldi", "When doves cry by Prince"];
 				var indexSon;
 				renderer = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
@@ -219,6 +220,19 @@
 						audioData[i] = average / frequencyArray[i].length;
 					}
 				}
+
+				/*
+					//
+					// Instruction:close
+					//
+				*/
+
+			document.getElementById('close').addEventListener('click', function(event)
+			{
+				document.getElementById('panelInstructions').style.display = "none";
+				document.getElementById('nuageDePoints').style.display = "flex";
+				sound.play();
+			});
 
 
 				/*
