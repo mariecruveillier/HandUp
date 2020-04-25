@@ -115,7 +115,9 @@
 				var posYmouse = 0.5;
 				var posYmouseMin = 0.5;
 				var hiden = false;
-				var played = false; 
+				var played = false;
+				var movementX = 0;
+				var movementY = 0;
 				var percentage = 0;
 				var son = ["sound/acdc-back-in-black.mp3", "sound/daft.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
 				var nameSon = ["Back in black by ACDC", "Around the world by Daft Punk", "Take five by Dave Brubeck ", "The four Seasons by Vivaldi", "When doves cry by Prince"];
@@ -133,7 +135,7 @@
 				var scene = new THREE.Scene();
 
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
-
+				//controls.enabled = true; 
 				loader = new THREE.ObjectLoader();
 				var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 				var audioData = [];
@@ -443,28 +445,69 @@
 						return;
 				}
 				else if (event.isComposing || event.keyCode === 68) {
-						//right
+					if(movementX > -40)
+					{
+						movementX--;
+					}
+						console.log(movementX);
 						return;
 				}
-				else if (event.isComposing || event.keyCode === 76) {
+				else if (event.isComposing || event.keyCode === 81) {
+						if(movementX<40)
+						{
+							movementX++;
+						}
+						console.log(movementX);
 						//left
 						return;
 				}
 				else if (event.isComposing || event.keyCode === 83) {
+						if(movementY> -10)
+						{
+							movementY--;
+						}
 						//low
 						return;
 				}
 				else if (event.isComposing || event.keyCode === 90) {
+						if(movementY < 10)
+						{
+							movementY++;
+						}
 						//top
 						return;
 				}
 			});
 
 		/*
-			//s
+			//
 			// gestion de l'audio : mettre en pause, reprendre la lecture, changer de musique
 			//
 		*/
+
+function updateRotation()
+{
+/*
+  	controls.enabled=false;
+    camera.rotation.x+=0.2;
+    console.log(camera.rotation.x);
+*/
+}
+
+/*
+
+	document.addEventListener('mousemove', event => {
+  		
+  		controls.enabled=false;
+			movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+			movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+      
+//			camera.rotation.x -= movementY / 200;
+//			camera.rotation.y -= movementX / 200;
+
+	});
+*/
+	
 
 			//affiche le nom de la musique jouée
 			function displayNameMusic()
@@ -504,6 +547,15 @@
 				var stopIMG = document.getElementById("StopIMG");
 				stopIMG.style.display = "none";
 			}
+
+		/*
+			//
+			//deplacement
+			//
+		*/
+
+		//caméra rotation 
+
 
 		/*
 			//
@@ -551,21 +603,26 @@
 				});
 
 			function render(){
+
 				  analyser.getFrequencyData();
 				  percentage += 0.0005;
 				  var p1 = path.getPointAt(percentage % 1);
 				  var p2 = path.getPointAt((percentage + 0.01) % 1);
+				  p2.x += movementX;
+				  p2.y += movementY;
 				  camera.position.set(p1.x, p1.y, p1.z);
 				  camera.lookAt(p2);
 				  renderer.render(scene, camera);
 			}
 
 			function animate() {
+				 updateRotation();
 			    createGeometry();
 				render();
 				scene.remove(tube);
 			    requestAnimationFrame(animate);
 			}
+
 
 		</script>
 		<script src="js/appear.js"></script>
