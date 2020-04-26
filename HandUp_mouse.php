@@ -67,23 +67,40 @@
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
-				<p id="top"> [z] </p>
-				<p class="indicationKeyBoard" id="keyTop"> top </p>
-				<p id="low"> [s] <p>
-				<p class="indicationKeyBoard" id="keyLow"> low </p>
-				<p id="left"> [q] </p>
-				<p class="indicationKeyBoard" id="keyLeft"> left </p>
-				<p id="right"> [d] </p>
-				<p class="indicationKeyBoard" id="keyRight"> right </p>
-				<p id="playPause"> [ ]  </p>
-				<p class="indicationKeyBoard" id="keyPlayPause"> play/pause</p>
-				<p id="previousM"> [p] </p>
-				<p class="indicationKeyBoard" id="keyPrevious"> previous music </p>
-				<p id="nextM"> [n] </p>
-				<p class="indicationKeyBoard" id="keyNext"> next music </p>   
-				<p id="more"> [+] </p>
-				<p class="indicationKeyBoard" id="keyNbParticles"> particles </p>
-				<p id="less"> [-] </p>
+				<div class="indicationKeyBoard">
+					<p id="top"> [z] </p>
+					<p id="keyTop"> top </p>
+				</div>
+				<div class="indicationKeyBoard" >
+					<p id="low"> [s] <p>
+					<p  id="keyLow"> low </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="left"> [q] </p>
+					<p  id="keyLeft"> left </p>
+				</div>
+				<div class="indicationKeyBoard">				
+					<p id="right"> [d] </p>
+					<p id="keyRight"> right </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="playPause"> [ ]  </p>
+					<p  id="keyPlayPause"> play/pause</p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="previousM"> [p] </p>
+					<p id="keyPrevious"> previous music </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="nextM"> [n] </p>
+					<p  id="keyNext"> next music </p>   
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="more"> [+] </p>
+					<p  id="keyNbParticles"> particles </p>
+					<p id="less"> [-] </p>
+				</div>
+<!--
 				<div id="instructions" id="instructionWeb" class="instructionsModeMouse"> <p> [i] </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
 				<div id="screenshot" id="screenshotWeb" class="instructionsModeMouse"><p>[c]</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
 				<div id="mouseMode"><p> mouse </p></div>
@@ -96,7 +113,7 @@
 				<div id="infoTrack"></div>
 				<div id="loading"> <img src="img/loading.png"> </div>
 				<video id="video" src="" opacity="0"></video>
-
+-->
 			</div>
 
 			<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>

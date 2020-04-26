@@ -58,35 +58,43 @@
 		<div id="nuageDePoints">
 			<div id="displayedVolume"></div>
 			<div id="nameMusic"><p id="displayNameMusic" text-align="center"></p></div>
-			<div id="hideCam" class="camModeWebcam">
-				<img id="hCam">
-			</div>
 			<div id="panelMenu">
-				<div id="rotLeft"> <img id="imgRotLeft" src="img/arrow_left.png"></div>
-				<div id="rotRight"> <img id="imgRotRight" src="img/arrow_white.png"></div>
-				<div id="rotTop"> <img id="imgRotTop" src="img/arrow_top.png"></div>
-				<div id="rotLow"> <img id="imgRotLow" src="img/arrow_low.png"></div>
-				<div id="instructions"  class="instructionsModeWebcam" ><p> instructions </p></div>
-				<div id="screenshot" class="instructionsModeWebcam" ><p>screenshot</p></div>
-				<a id="mouseMode" href="./HandUp.mouse.php" class="otherMode">  
-					<p> mouse </p>
-				</a>
-				<div id="webcamMode"><p> webcam </p></div>
-				<div id="manageSound" class="manageFromMouse"></div>
-				<div id="nextSound" class="manageFromMouse"></div>
-				<div id="previousSound" class="manageFromMouse"></div>
-				<div id="infoTrack"></div>
-				<div id="loading"> <img src
-					="img/loading.png"> </div>
-
-				<div id="nbPnts">
-					<img id="imgCircles" src="img/circles.png" alt="nombre de points"/>
-					<input type="range" id="DetailCircleRange" class='range_css'/>
+				<div>
+					<video id="video" src="" opacity="0"></video>
+					<div id="infoTrack"></div>
 				</div>
-				<video id="video" src="" opacity="0"></video>
 
+				<div id="playerSound">
+					<div id="previousSound"></div>
+					<div id="manageSound"></div>
+					<div id="nextSound"></div>			
+				</div>
+				<div id="nbPnts">
+						<img id="imgCircles" src="img/circles.png" alt="nombre de points"/>
+						<input type="range" id="DetailCircleRange" class='range_css'/>
+				</div>
+				<div id="instructions" class="buttonModeWebcam">
+					<p> instructions </p>
+				</div>
+				<div id="screenshot" class="buttonModeWebcam">
+					<p>screenshot</p>
+				</div>
+				<div id="mode">
+					<div>
+						<p> webcam </p>
+					</div>
+					<a href="./HandUp.mouse.php" class="otherMode">
+						<p> mouse </p>
+					</a>
+				</div>
+				<div id="rot">
+					<div id="rotLeft"> <img id="imgRotLeft" src="img/arrow_left.png"></div>
+					<div id="rotRight"> <img id="imgRotRight" src="img/arrow_white.png"></div>
+					<div id="rotTop"> <img id="imgRotTop" src="img/arrow_top.png"></div>
+					<div id="rotLow"> <img id="imgRotLow" src="img/arrow_low.png"></div>
+				</div>
 			</div>
-
+				
 			<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
 			<script type="text/javascript" src="js/app.js"></script>
 			
@@ -169,8 +177,7 @@
 				  var z = points[i][1];
 				  points[i] = new THREE.Vector3(x, y, z);
 				}
-				
-				hideCam.style.backgroundImage = "url('img/no_video.png')";
+
 				document.getElementById("manageSound").style.backgroundImage = "url('img/playBlanc.png')";
 				document.getElementById("previousSound").style.backgroundImage = "url('img/lastBlanch.png')";
 				document.getElementById("nextSound").style.backgroundImage = "url('img/nextBlanc.png')";
@@ -262,10 +269,6 @@
 						    position.add(normalPoint) // We add the normal values for each point
 						    geometry.vertices.push(position);
 						    geometry.colors.push(color);
-					   }
-					   if(radius < 1)
-					   {
-					   		document.getElementById("loading").style.display = "flex";
 					   }
 					}
 				}
@@ -493,16 +496,6 @@
 				stopIMG.style.display = "none";
 			}
 
-
-		/*
-			//
-			// Mouse 
-			//
-		*/
-			document.getElementById('webcamMode').style.border = "0.1em solid #404040";
-			document.getElementById('webcamMode').style.backgroundColor = "#2e2e2e";
-
-
 		/*
 			//
 			// Instructions
@@ -583,7 +576,6 @@
 
 		</script>
 		<script src="js/appear.js"></script>
-		<script src="js/hideCam.js"></script>
 		<script src="js/changeVolume.js"></script>
 		<script src="js/screenshot.js"></script>
 	</div>

@@ -57,7 +57,7 @@
 				    <option value="Daft"> Daft Punk </option>
 				</select>
 		</div>
-			<div id="button2"> <img src="img/letsgo.png" width="80%"> </div>
+			<div id="button2"> <img src="img/letsgo.png"> </div>
 		</div>
 		<div id="StopIMG"> <img src="img/pause.png"></div> 
 		<div id="nuageDePoints">
@@ -67,35 +67,64 @@
 				<img id="hCam">
 			</div>
 			<div id="panelMenu">
-				<p id="top"> [z] </p>
-				<p class="indicationKeyBoard" id="keyTop"> top </p>
-				<p id="low"> [s] <p>
-				<p class="indicationKeyBoard" id="keyLow"> low </p>
-				<p id="left"> [q] </p>
-				<p class="indicationKeyBoard" id="keyLeft"> left </p>
-				<p id="right"> [d] </p>
-				<p class="indicationKeyBoard" id="keyRight"> right </p>
-				<p id="playPause"> [ ]  </p>
-				<p class="indicationKeyBoard" id="keyPlayPause"> play/pause</p>
-				<p id="previousM"> [p] </p>
-				<p class="indicationKeyBoard" id="keyPrevious"> previous music </p>
-				<p id="nextM"> [n] </p>
-				<p class="indicationKeyBoard" id="keyNext"> next music </p>   
-				<p id="more"> [+] </p>
-				<p class="indicationKeyBoard" id="keyNbParticles"> particles </p>
-				<p id="less"> [-] </p>
-				<div id="instructions" id="instructionWeb" class="instructionsModeMouse"> <p> [i] </p></div> <p id="instruc" class="indicationKeyBoard">instructions </p>
-				<div id="screenshot" id="screenshotWeb" class="instructionsModeMouse"><p>[c]</p></div> <p id="screenS" class="indicationKeyBoard">screenshot </p>
-				<div id="mouseMode"><p> mouse </p></div>
-				<a id="webcamMode" href="./HandUp.cam.php" class="otherMode">
+				<div class="indicationKeyBoard">
+					<p id="top"> [z] </p>
+					<p id="keyTop"> top </p>
+				</div>
+				<div class="indicationKeyBoard" >
+					<p id="low"> [s] </p>
+					<p  id="keyLow"> low </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="left"> [q] </p>
+					<p  id="keyLeft"> left </p>
+				</div>
+				<div class="indicationKeyBoard">				
+					<p id="right"> [d] </p>
+					<p id="keyRight"> right </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="playPause">[_]</p>
+					<p  id="keyPlayPause"> play/pause</p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="previousM"> [p] </p>
+					<p id="keyPrevious"> previous music </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="nextM"> [n] </p>
+					<p  id="keyNext"> next music </p>   
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="more"> [+] </p>
+					<p  id="keyNbParticles"> particles </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="less"> [-] </p>
+					<p  id="keyNbParticles"> particles </p>
+				</div>
+			    <div class="indicationKeyBoard">
+					<p id="instructions">[i]</p>
+					<p  id="keyNbParticles"> instructions </p>
+				</div>
+				<div class="indicationKeyBoard">
+					<p id="screenshot">[c]</p>
+					<p>screenshot </p>
+				</div>
+				<div id="mode">
+					<div>
+						<p> mouse </p>
+					</div>
+					<a href="./HandUp.cam.php" class="otherMode">
 					<p> webcam </p>
-				</a>
-				<div id="manageSound" class="manageFromKeyboard"></div>
-				<div id="nextSound" class="manageFromKeyboard"></div>
-				<div id="previousSound" class="manageFromKeyboard"></div>
-				<div id="infoTrack"></div>
-				<div id="loading"> <img src="img/loading.png"> </div>
-				<video id="video" src="" opacity="0"></video>
+					</a>
+				</div>
+
+				<div id="manageSound" class="manageFromKeyboard" style="position:absolute"></div>
+				<div id="nextSound" class="manageFromKeyboard" style="position:absolute"></div>
+				<div id="previousSound" class="manageFromKeyboard" style="position:absolute"></div>
+				<div id="infoTrack" style="position:absolute"></div>
+				<video id="video" src="" opacity="0" style="position:absolute"></video>
 
 			</div>
 
@@ -285,10 +314,6 @@
 						    position.add(normalPoint) // We add the normal values for each point
 						    geometry.vertices.push(position);
 						    geometry.colors.push(color);
-					   }
-					   if(radius < 1)
-					   {
-					   		document.getElementById("loading").style.display = "flex";
 					   }
 					}
 				}
@@ -523,7 +548,7 @@
 			function stopMusic(){
 				var stopIMG = document.getElementById("StopIMG");
 				sound.pause();
-				stopIMG.style.display = "flex";
+				stopIMG.style.display = "block";
 			}
 
 			function playMusic(){
@@ -531,15 +556,6 @@
 				var stopIMG = document.getElementById("StopIMG");
 				stopIMG.style.display = "none";
 			}
-
-
-		/*
-			//
-			// Mouse 
-			//
-		*/
-			document.getElementById('mouseMode').style.border = "0.1em solid #404040";
-			document.getElementById('mouseMode').style.backgroundColor = "#2e2e2e";
 
 		/*
 			//

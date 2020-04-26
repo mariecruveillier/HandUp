@@ -22,7 +22,6 @@ document.getElementById('button2').addEventListener('click', function (event) {
 				var previousSound = document.getElementById("previousSound");
 				var nextSound = document.getElementById("nextSound");
 				var manageSound = document.getElementById("manageSound");
-				var hideCam = document.getElementById("hideCam");
 				var infoTrack = document.getElementById("infoTrack");
 				var nbPnts = document.getElementById("nbPnts");
 				var panelMenu = document.getElementById("panelMenu");
@@ -35,7 +34,6 @@ document.getElementById('button2').addEventListener('click', function (event) {
 				objAppear(cam);
 				objAppear(previousSound);
 				objAppear(nextSound);
-				objAppear(hideCam);
 				objAppear(infoTrack);
 				lessTheOppacity(menu);
 				displayNameMusic();
