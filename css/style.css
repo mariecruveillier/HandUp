@@ -58,18 +58,13 @@ canvas {
 }
 
 #menu{
-	display : flex;
-	flex-direction : column;
-	flex-wrap : wrap;
 	width: 10%;
 	z-index : 2;
-	align-items : center;
 	position : absolute;
 }
 
 #panelMenu{
 	width : 15%;
-	height: 620px;
 	background-color: #2e2e2e;
 	z-index: 4;
 	position: absolute;
@@ -501,21 +496,18 @@ p{
 	color: white;
 }
 
+
 #button1, #button2{
 	background-color: black;
-	display : flex;
-
+	left:50%;
+	transform: translate3d(-50%,0,0);
 }
 
 #button2{
-	margin-top: 50%;
-	margin-left: 30%;
+	bottom: -120px;
+	left:50%;
+	transform: translate3d(-50%,0,0);
 	position: absolute;
-}
-
-#button2:hover{
-	width: 105%;
-	margin-left: 36%;
 }
 
 option {
