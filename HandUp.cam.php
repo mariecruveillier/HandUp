@@ -10,7 +10,6 @@
 	<script src="js/LegacyJSONLoader.js"></script>
 	<script src="js/ObjectLoader.js"></script>
 	<script src="js/threex.domevents.js"></script>
-	<script src="js/interactionMouse.js"></script>
 	<script src="html2canvas.min.js" type="text/javascript"></script>
 
 </head>
