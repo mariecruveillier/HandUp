@@ -26,14 +26,14 @@
 				<div id="hand">
 					<img src="img/hand.png">
 					<p> 
-						Depending on the position of the hand, loudness of music, the colors and the opacity of the particles change. The rest of the interactions is triggered by keyboard keys.
+						Depending on the position of the hand, loudness of music, the colors and the opacity of the particles change. The rest of the interactions is triggered by click on some buttons.
 					</p>
 				</div>
 				<div id="rangeCircle">
 					<img src="img/circles.png">
 					<p> other interactions : 
 						<br>
-						look at around the camera, make a screenshot of the render, change the number of particles, stop, play and change the music
+						look at around you by moving the virtual camera, make a screenshot of the render, change the number of particles, stop, play and change the music
 					</p>
 				</div>
 			</div>
