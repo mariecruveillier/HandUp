@@ -78,7 +78,7 @@ canvas {
 #nameMusic{
 	display : flex;
 	width: 100%;
-	margin-top: 28%;
+	margin-top: 27%;
 	z-index: 4;
 	position: absolute;
 	height: 40px;
@@ -300,7 +300,7 @@ canvas {
 	display : none;
 	position:absolute;
 	left:50%;
-	top:50%;
+	top:25%;
 	transform : translate3d(-50%,-50%,0);
 }
 

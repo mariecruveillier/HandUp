@@ -96,12 +96,12 @@
 					<p  id="keyNext"> next music </p>   
 				</div>
 				<div class="indicationKeyBoard">
-					<p id="more"> [+] </p>
-					<p  id="keyNbParticles"> particles </p>
+					<p id="more"> [b] </p>
+					<p  id="keyNbParticles"> + particles </p>
 				</div>
 				<div class="indicationKeyBoard">
-					<p id="less"> [-] </p>
-					<p  id="keyNbParticles"> particles </p>
+					<p id="less"> [v] </p>
+					<p  id="keyNbParticles"> - particles </p>
 				</div>
 			    <div class="indicationKeyBoard">
 					<p id="instructions">[i]</p>
@@ -151,7 +151,7 @@
 				var movementX = 0;
 				var movementY = 0;
 				var percentage = 0;
-				var son = ["sound/acdc-back-in-black.mp3", "sound/daft.mp3", "sound/take-five-the-dave-brubeck-quartet-1959.mp3", "sound/les-quatre-saisons-vivaldi.mp3", "sound/prince-when-doves-cry.mp3" ];
+				var son = ["./sound/acdc-back-in-black.mp3", "./sound/daft.mp3", "./sound/take-five-the-dave-brubeck-quartet-1959.mp3", "./sound/les-quatre-saisons-vivaldi.mp3", "./sound/prince-when-doves-cry.mp3" ];
 				var nameSon = ["Back in black by ACDC", "Around the world by Daft Punk", "Take five by Dave Brubeck ", "The four Seasons by Vivaldi", "When doves cry by Prince"];
 				var indexSon;
 				renderer = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
@@ -372,13 +372,13 @@
 		*/
 			//mode clavier
 			document.addEventListener("keydown", event => {
-  				if (event.isComposing || event.keyCode === 107) {
+  				if (event.isComposing || event.keyCode === 66) { //b
   					if (circlesDetail<1200){
   	    				circlesDetail  += 50;					
   					}
     			return;
 		  		}
-		  		else if (event.isComposing || event.keyCode === 109) {
+		  		else if (event.isComposing || event.keyCode === 86) { //v
 		  			if(circlesDetail>50)
 		  			{
 	    				circlesDetail  -= 50;	  				
@@ -482,7 +482,6 @@
 					{
 						movementX--;
 					}
-						console.log(movementX);
 						return;
 				}
 				else if (event.isComposing || event.keyCode === 81) {
@@ -490,7 +489,6 @@
 						{
 							movementX++;
 						}
-						console.log(movementX);
 						//left
 						return;
 				}
