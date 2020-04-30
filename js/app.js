@@ -51,6 +51,8 @@ handTrack.startVideo(video)
 				}
 				else{
 					document.getElementById("infoTrack").innerHTML = "no detection";
+					posx = 0;
+					document.getElementById("positionMouseX").innerHTML = posx;
 				};
 			
 			});

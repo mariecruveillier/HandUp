@@ -36,12 +36,12 @@
 						look at around the camera, make a screenshot of the render, change the number of particles, stop, play and change the music
 					</p>
 				</div>
-				<div id="close"> <img src="img/close.png"></div>
 			</div>
+			<div id="close"> <img src="img/close.png"></div>
 		</div>
 		<div id="menu">
-			<div id="positionMouseX"></div>
-			<div id="positionMouseY"></div>
+			<div id="positionMouseX">0</div>
+			<div id="positionMouseY">0</div>
 			<div id="button1"><p>
 				<select name="musique" id="musique_selection">
 				    <option value="">--Please choose a song--</option>
@@ -111,8 +111,6 @@
 				var geometry;
 				var analyser, dataArray;
 				var posXmouse = 0;
-				var posYmouse = 0.5;
-				var posYmouseMin = 0.5;
 				var movementX =0;
 				var movementY = 0;
 				var hiden = false;
