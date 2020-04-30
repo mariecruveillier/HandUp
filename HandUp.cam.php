@@ -36,8 +36,8 @@
 						look at around the camera, make a screenshot of the render, change the number of particles, stop, play and change the music
 					</p>
 				</div>
+				<div id="close"> <img src="img/close.png"></div>
 			</div>
-			<div id="close"> <img src="img/close.png"></div>
 		</div>
 		<div id="menu">
 			<div id="positionMouseX"></div>

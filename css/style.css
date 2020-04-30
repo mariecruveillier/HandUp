@@ -488,7 +488,7 @@ box-shadow:0 0 .125rem #aaa}
 	display: flex;
 	position: absolute;
 	font-family: 'Roboto Mono', monospace;
-	text-align :justify;
+
 	justify-content:space-around;
 	flex-direction: row;
 }
@@ -504,7 +504,7 @@ box-shadow:0 0 .125rem #aaa}
 #close{
 	width: 15%;
 	position: absolute;
-	bottom: 100px;
+	bottom: 10px;
 	left: 50%;
 	transform: translate3d(-50%,0,0);
 }
